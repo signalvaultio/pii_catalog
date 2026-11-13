@@ -1,0 +1,38 @@
+# IBANs: published example account numbers, spaced and compact.
+%{
+  valid: [
+    "DE89 3704 0044 0532 0130 00",
+    "SE45 5000 0000 0583 9825 7466",
+    "NO93 8601 1117 947",
+    "GB82 WEST 1234 5698 7654 32",
+    "FR14 2004 1010 0505 0001 3M02 606",
+    "FI2112345600000785",
+    # Letters in the short last group.
+    "MT84 MALT 0110 0001 2345 MTLC AST0 01S",
+    "LI21 0881 0000 2324 013A A",
+    "IS140159260076545510730339",
+    # A token after a spaced IBAN is not taken into it.
+    {"IBAN AT61 1904 3002 3457 3201 BIC OPSKATWW", "AT61 1904 3002 3457 3201"},
+    {"IBAN: ES91 2100 0418 4502 0005 1332 EUR", "ES91 2100 0418 4502 0005 1332"},
+    {"IBAN BE68 5390 0754 7034 BIC GEBABEBB", "BE68 5390 0754 7034"},
+    {"SE45 5000 0000 0583 9825 7466 TO PAY", "SE45 5000 0000 0583 9825 7466"},
+    {"AT61 1904 3002 3457 3201 ABCD", "AT61 1904 3002 3457 3201"},
+    {"MT84 MALT 0110 0001 2345 MTLC AST0 01S EUR", "MT84 MALT 0110 0001 2345 MTLC AST0 01S"},
+    {"LI21 0881 0000 2324 013A A BIC", "LI21 0881 0000 2324 013A A"}
+  ],
+  # Wrong check digits, a length the country does not use, and countries
+  # outside the SEPA list (the Faroe Islands' is the IBAN Registry example).
+  invalid: [
+    "DE89 3704 0044 0532 0130 01",
+    "SE4550000000058398257467",
+    "NO9386011117948",
+    "DE89 3704 0044 0532 0130",
+    "US64 SVBK US6S 3300 9673 86",
+    "FO6264600001631634"
+  ],
+  look_alikes: [
+    "Part number AB12 CDEF GHIJ KLMN",
+    "SKU XY99ABCDEFGHIJKLM restocked",
+    "lowercase de89370400440532013000 is not matched"
+  ]
+}

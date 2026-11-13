@@ -1,0 +1,11 @@
+# Build and dependency output
+/_build/
+/cover/
+/deps/
+/doc/
+/priv/plts/
+/.fetch
+erl_crash.dump
+*.ez
+pii_catalog-*.tar
+/tmp/
